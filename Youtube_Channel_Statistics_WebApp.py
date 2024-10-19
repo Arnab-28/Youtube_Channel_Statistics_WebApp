@@ -41,4 +41,4 @@ if st.button('Get Channel Info'):
         else:
             st.error('No data found for the provided Channel ID. Please check the ID and try again.')
     else:
-        st.warning('Please enter a Channel ID.')
+        st.warning('Please enter a Channel ID 👆!')
