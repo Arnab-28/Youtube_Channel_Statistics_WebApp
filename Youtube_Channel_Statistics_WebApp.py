@@ -49,7 +49,7 @@ def get_channel_stats(channel_id):
     
     return data
 
-st.title('YouTube Channel Information App')
+st.title('Channel Checker: YouTube Analytics at Your Fingertips')
 st.header('Enter YouTube Channel Name')
 
 channel_name = st.text_input('Channel Name:', '')
