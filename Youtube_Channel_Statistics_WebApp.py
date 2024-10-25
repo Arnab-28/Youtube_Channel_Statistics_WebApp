@@ -38,10 +38,12 @@ def get_channel_id(api_key, channel_name):
         else:
             st.error('Failed to fetch data from YouTube API. Please try again later.')
             return None
+            Break
         
     except Exception:
         st.error(f"Error occurred while fetching channel ID: {str(e)}")
         return None
+        Break
 
 def get_channel_stats(channel_id):
     
@@ -65,6 +67,7 @@ def get_channel_stats(channel_id):
     except Exception:
         st.error(f"Error occurred while fetching channel statistics: {str(e)}")
         return None
+        Break
 
 st.title('YouTube Analyzer: Data-Driven Insights')
 st.header('Enter YouTube Channel Name/ID')
