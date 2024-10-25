@@ -56,10 +56,10 @@ def get_channel_stats(channel_id):
     
     return data
 
-st.title('YouTube Channel Information App')
-st.header('Enter YouTube Channel Name')
+st.title('YouTube Analyzer: Data-Driven Insights')
+st.header('Enter YouTube Channel Name/ID')
 
-channel_name = st.text_input('Channel Name:', '')
+channel_name = st.text_input('Channel Name/ID:', '')
 
 if st.button('Get Channel Info'):
     if channel_name:
@@ -73,6 +73,6 @@ if st.button('Get Channel Info'):
             st.write(f"**Total Views:** {channel_info['Total_Views']}")
             st.write(f"**Channel Joinning Date :** {channel_info['Joinning_Date']}")
         else:
-            st.error('No data found for the provided Channel Name. Please check the Name and try again.')
+            st.error('No data found for the provided Channel Name/ID. Please check the Name/ID and try again.')
     else:
-        st.warning('Please enter a Channel Name 👆')
+        st.warning('Please enter a Channel Name/ID 👆')
