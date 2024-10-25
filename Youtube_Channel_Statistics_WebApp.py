@@ -33,18 +33,16 @@ def get_channel_id(api_key, channel_name):
                 # Getting the first channel ID from the search results
                 return data['items'][0]['snippet']['channelId']
             else:
-                st.error('No channel found for the provided name. Please check and try again.')
+                #st.error('No channel found for the provided name. Please check and try again.')
                 return None
         else:
-            st.error('Failed to fetch data from YouTube API. Please try again later.')
+            #st.error('Failed to fetch data from YouTube API. Please try again later.')
             return None
             Break
         
     except Exception:
-        st.error(f"Error occurred while fetching channel ID: {str(e)}")
         return None
-        Break
-
+        
 def get_channel_stats(channel_id):
     
     try:
@@ -65,10 +63,8 @@ def get_channel_stats(channel_id):
         }
         
     except Exception:
-        st.error(f"Error occurred while fetching channel statistics: {str(e)}")
         return None
-        Break
-
+        
 st.title('YouTube Analyzer: Data-Driven Insights')
 st.header('Enter YouTube Channel Name/ID')
 
@@ -87,7 +83,7 @@ if st.button('Get Channel Info'):
                 st.write(f"**Total Views:** {channel_info['Total_Views']}")
                 st.write(f"**Channel Joinning Date :** {channel_info['Joinning_Date']}")
             else:
-                st.error('Failed to retrieve channel statistics. Please try again later.')
+                st.error('Failed to retrieve channel statistics. Server is Busy Now! Please try again later.')
         else:
             st.error('No data found for the provided Channel Name/ID. Please check the Name/ID and try again.')
     else:
