@@ -27,8 +27,10 @@ def get_channel_id(api_key, channel_name):
             channel_id = data['items'][0]['snippet']['channelId']
             return channel_id
         else:
+            st.error('Server is Busy Now! Please try later.')
             return None
     else:
+        st.error('Server is Busy Now! Please try later.')
         return None
 
 def get_channel_stats(channel_id):
@@ -50,9 +52,9 @@ def get_channel_stats(channel_id):
     return data
 
 st.title('Channel Checker: YouTube Analytics at Your Fingertips')
-st.header('Enter YouTube Channel Name')
+st.header('Enter YouTube Channel Name/ID')
 
-channel_name = st.text_input('Channel Name:', '')
+channel_name = st.text_input('Channel Name/ID:', '')
 
 if st.button('Get Channel Info'):
     if channel_name:
