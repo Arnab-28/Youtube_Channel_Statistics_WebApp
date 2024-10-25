@@ -1,4 +1,4 @@
 streamlit
-google-api-python-client
-dotenv
+google-api-python-client==2.84.0
+python-dotenv
 pip==24.2
