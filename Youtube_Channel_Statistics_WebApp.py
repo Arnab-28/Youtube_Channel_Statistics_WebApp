@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 import streamlit as st
 import requests
 
-api_key = 'AIzaSyBvVHqveFW4FLUuk4lh2kn8NMAF7t0QsY4'
+api_key = 'AIzaSyAXSesf1gnp1yVRCB5rW0ioTceLT2EB1SE'
 
 def get_channel_id(api_key, channel_name):
     base_url = "https://www.googleapis.com/youtube/v3/search"
