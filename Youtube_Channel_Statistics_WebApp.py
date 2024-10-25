@@ -85,6 +85,6 @@ if st.button('Get Channel Info'):
             else:
                 st.error('Failed to retrieve channel statistics. Server is Busy Now! Please try again later.')
         else:
-            st.error('No data found for the provided Channel Name/ID. Please check the Name/ID and try again.')
+            st.error('Server is Busy Now! Please try again later.')
     else:
         st.warning('Please enter a Channel Name/ID 👆')
