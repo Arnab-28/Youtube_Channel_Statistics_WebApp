@@ -1,8 +1,13 @@
 from googleapiclient.discovery import build
 import streamlit as st
 import requests
+from dotenv import load_dotenv
+import os
 
-api_key = 'AIzaSyAXSesf1gnp1yVRCB5rW0ioTceLT2EB1SE'
+load_dotenv()
+
+# Use the YouTube API key
+api_key = os.getenv("api_key")
 
 def get_channel_id(api_key, channel_name):
     base_url = "https://www.googleapis.com/youtube/v3/search"
@@ -51,10 +56,10 @@ def get_channel_stats(channel_id):
     
     return data
 
-st.title('Channel Checker: YouTube Analytics at Your Fingertips')
-st.header('Enter YouTube Channel Name/ID')
+st.title('YouTube Channel Information App')
+st.header('Enter YouTube Channel Name')
 
-channel_name = st.text_input('Channel Name/ID:', '')
+channel_name = st.text_input('Channel Name:', '')
 
 if st.button('Get Channel Info'):
     if channel_name:
@@ -67,7 +72,6 @@ if st.button('Get Channel Info'):
             st.write(f"**Total Videos:** {channel_info['Total_Videos']}")
             st.write(f"**Total Views:** {channel_info['Total_Views']}")
             st.write(f"**Channel Joinning Date :** {channel_info['Joinning_Date']}")
-            
         else:
             st.error('No data found for the provided Channel Name. Please check the Name and try again.')
     else:
