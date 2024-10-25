@@ -33,11 +33,14 @@ def get_channel_id(api_key, channel_name):
                 # Getting the first channel ID from the search results
                 return data['items'][0]['snippet']['channelId']
             else:
+                st.error('No channel found for the provided name. Please check and try again.')
                 return None
         else:
+            st.error('Failed to fetch data from YouTube API. Please try again later.')
             return None
         
     except Exception:
+        st.error(f"Error occurred while fetching channel ID: {str(e)}")
         return None
 
 def get_channel_stats(channel_id):
@@ -60,6 +63,7 @@ def get_channel_stats(channel_id):
         }
         
     except Exception:
+        st.error(f"Error occurred while fetching channel statistics: {str(e)}")
         return None
 
 st.title('YouTube Analyzer: Data-Driven Insights')
@@ -68,25 +72,20 @@ st.header('Enter YouTube Channel Name/ID')
 channel_name = st.text_input('Channel Name/ID:', '')
 
 if st.button('Get Channel Info'):
-    
-    try:
-        if channel_name:
-            channel_id = get_channel_id(api_key,channel_name)
-            if channel_id:
-                channel_info = get_channel_stats(channel_id)
-                if channel_info:
-                    st.subheader('Channel Details')
-                    st.write(f"**Channel Name:** {channel_info['Channel_name']}")
-                    st.write(f"**Total Subscribers:** {channel_info['Total_Subscribers']}")
-                    st.write(f"**Total Videos:** {channel_info['Total_Videos']}")
-                    st.write(f"**Total Views:** {channel_info['Total_Views']}")
-                    st.write(f"**Channel Joinning Date :** {channel_info['Joinning_Date']}")
-                else:
-                    st.error('Server is busy now! Please try again later.')
+    if channel_name:
+        channel_id = get_channel_id(api_key,channel_name)
+        if channel_id:
+            channel_info = get_channel_stats(channel_id)
+            if channel_info:
+                st.subheader('Channel Details')
+                st.write(f"**Channel Name:** {channel_info['Channel_name']}")
+                st.write(f"**Total Subscribers:** {channel_info['Total_Subscribers']}")
+                st.write(f"**Total Videos:** {channel_info['Total_Videos']}")
+                st.write(f"**Total Views:** {channel_info['Total_Views']}")
+                st.write(f"**Channel Joinning Date :** {channel_info['Joinning_Date']}")
             else:
-                st.error('No data found for the provided Channel Name/ID. Please check the Name/ID and try again.')
+                st.error('Failed to retrieve channel statistics. Please try again later.')
         else:
-            st.warning('Please enter a Channel Name/ID 👆')
-    
-    except Exception:
-        st.error('Server is busy now! Please try again later.')
+            st.error('No data found for the provided Channel Name/ID. Please check the Name/ID and try again.')
+    else:
+        st.warning('Please enter a Channel Name/ID 👆')
