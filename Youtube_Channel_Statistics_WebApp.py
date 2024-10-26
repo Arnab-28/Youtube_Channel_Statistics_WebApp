@@ -1,13 +1,10 @@
 from googleapiclient.discovery import build
 import streamlit as st
 import requests
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
 # Use the YouTube API key
-api_key = os.getenv("api_key")
+api_key = st.secrets["api_key"]
 
 # Function to get channel ID by channel name, if ID is unknown
 @st.cache_data(show_spinner=False)
