@@ -1,4 +1,4 @@
-# Channel Checker: YouTube Analytics at Your Fingertips
+# YouTube Analyzer: Data-Driven Insights
 
 ## Objective
 
